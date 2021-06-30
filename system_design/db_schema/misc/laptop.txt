@@ -1,0 +1,135 @@
+Laptop
+-
+id pk
+cpu int FK - cpu.id
+ram int
+storage int
+videocard int
+screen int
+keyboard int
+wan_network int FK -0 wan_network.id
+lan_network int
+pan_network int FK -0 pan_network.id
+optical_drive int FK -0 optical_drive.id
+battery int FK -0 battery.id
+os int FK -0 os.id
+soundcard int
+carrycase int FK -0 carrycase.id
+warranty int FK -0 warranty.id
+
+cpu
+-
+id int pk
+brand varchar(30)
+product_collection varchar(30)
+processor_number varchar(30)
+cores int
+threads int
+base_frequency varchar(50)
+max_turbo_frequency varchar(30)
+cache char(10)
+tdp char(10)
+
+ram
+-
+id int pk FK >- Laptop.ram
+memory_size int
+dimensions varchar(30)
+clock_speed varchar(30)
+memory_speed varchar(30)
+pins  int
+ram_memory_technology varchar(30)
+ram_type varchar(30)
+
+storage
+-
+id int pk FK >- Laptop.storage
+data_transfer_rate varchar(30)
+type int FK >- storage_type.id
+capacity int
+form_factor decimal(2,4)
+hardware_interface varchar(30)
+dimensions varchar(30)
+
+storage_type
+--
+id int pk
+type char(10)
+
+videocard
+-
+id int pk FK >- Laptop.videocard
+card_interface varchar(30)
+gpu_processor varchar(30)
+ram_size int
+ram char(10)
+dimensions varchar(30)
+memory_bus_width int
+memory_clock_speed int
+
+screen
+-
+id int pk FK - Laptop.screen
+type char(10)
+size decimal(2,4)
+resolution varchar(30)
+other_details varchar(30)
+
+keyboard
+-
+id int pk FK - Laptop.keyboard
+type varchar(50)
+
+wan_network
+-
+id int pk 
+brand varchar(30)
+connectivity_technology varchar(30)
+
+lan_network
+-
+id int pk FK - Laptop.lan_network
+brand varchar(30)
+connectivity_technology varchar(30)
+
+pan_network
+-
+id int pk 
+brand varchar(30)
+connectivity_technology varchar(30)
+
+optical_drive
+-
+id int pk 
+type varchar(30)
+rpm int
+
+battery
+-
+id int pk 
+voltage decimal(2,4)
+cell_type varchar(30)
+capacity varchar(30)
+
+os
+-
+id int pk 
+language varchar(30)
+manufacturer varchar(30)
+
+soundcard
+-
+id int pk FK - Laptop.lan_network
+type varchar(30)
+manufacturer varchar(30)
+details varchar(30)
+
+carrycase
+-
+id int pk 
+type varchar(30)
+
+warranty
+-
+id int pk 
+type varchar(30)
